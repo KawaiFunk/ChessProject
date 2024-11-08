@@ -14,7 +14,7 @@
             return player switch
             {
                 Player.White => Player.Black,
-                Player.Black => Player.Black,
+                Player.Black => Player.White,
                 _ => Player.None,
             };
         }
