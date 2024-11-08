@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessUI"
         mc:Ignorable="d"
-        Title="Chess Project" Width="600" SizeToContent="Height"
+        Title="Chess Project" Width="900" SizeToContent="Height"
         Icon="Assets/icon.ico"
         WindowStartupLocation="CenterScreen"
-        Background="Black">
+        Background="Black"
+        ResizeMode="NoResize">
     <Viewbox>
         <Grid x:Name="BoardGrid"
               Width="600"
