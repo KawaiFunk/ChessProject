@@ -49,7 +49,7 @@ namespace ChessLogic
             this[7, 6] = new Knight(Player.White);
             this[7, 7] = new Rook(Player.White);
 
-            for (int i = 0;i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 this[6, i] = new Pawn(Player.White);
                 this[1, i] = new Pawn(Player.Black);
@@ -65,6 +65,48 @@ namespace ChessLogic
         public bool IsEmpty(Position pos)
         {
             return this[pos] == null;
+        }
+
+        public IEnumerable<Position> PiecePositions()
+        {
+            for (int r = 0; r < 8; r++)
+            {
+                for (int c = 0; c < 8; c++)
+                {
+                    Position pos = new Position(r, c);
+
+                    if (!IsEmpty(pos))
+                    {
+                        yield return pos;
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<Position> PiecePositionFor(Player player)
+        {
+            return PiecePositions().Where(pos => this[pos].Color == player);
+        }
+
+        public bool IsInCheck(Player player)
+        {
+            return PiecePositionFor(player).Any(pos =>
+            {
+                Piece piece = this[pos];
+                return piece.CanCaptureOpponentKIng(pos, this);
+            });
+        }
+
+        public Board Copy()
+        {
+            Board copy = new Board();
+
+            foreach (Position pos in PiecePositions())
+            {
+                copy[pos] = this[pos].Copy();
+            }
+
+            return copy;
         }
     }
 }

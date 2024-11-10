@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChessLogic
+﻿namespace ChessLogic
 {
     public class GameState
     {
-        public Board Board {  get; }
+        public Board Board { get; }
         public Player CurrentPlayer { get; private set; }
+        public Result Result { get; private set; } = null;
 
         public GameState(Player player, Board board)
         {
@@ -25,13 +20,46 @@ namespace ChessLogic
             }
 
             Piece piece = Board[pos];
-            return piece.GetMoves(Board, pos);
+            IEnumerable<Move> moveCandidates = piece.GetMoves(Board, pos);
+            return moveCandidates.Where(move => move.IsLegal(Board));
         }
 
         public void MakeMove(Move move)
         {
             move.Execute(Board);
             CurrentPlayer = CurrentPlayer.Opponent();
+            CheckForGameOver();
+        }
+
+        public IEnumerable<Move> AllLegalMoves(Player player)
+        {
+            IEnumerable<Move> moveCandidates = Board.PiecePositionFor(player).SelectMany(pos =>
+            {
+                Piece piece = Board[pos];
+                return piece.GetMoves(Board, pos);
+            });
+
+            return moveCandidates.Where(move => move.IsLegal(Board));
+        }
+
+        private void CheckForGameOver()
+        {
+            if (!AllLegalMoves(CurrentPlayer).Any())
+            {
+                if (Board.IsInCheck(CurrentPlayer))
+                {
+                    Result = Result.Win(CurrentPlayer.Opponent());
+                }
+                else
+                {
+                    Result = Result.Draw(EndReason.Stalemate);
+                }
+            }
+        }
+
+        public bool IsGameOver()
+        {
+            return Result != null;
         }
     }
 }

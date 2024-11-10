@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -37,6 +38,15 @@ namespace ChessLogic
         protected IEnumerable<Position> MovePositionInDirs(Position from, Board board, Direction[] dirs)
         {
             return dirs.SelectMany(dir => MovePositionInDir(from, board, dir));
+        }
+
+        public virtual bool CanCaptureOpponentKIng(Position from, Board board)
+        {
+            return GetMoves(board, from).Any(move =>
+            {
+                Piece piece = board[move.ToPos];
+                return piece != null && piece.Type == PieceType.King;
+            });
         }
     }
 }
