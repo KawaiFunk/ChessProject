@@ -42,7 +42,7 @@
             return moveCandidates.Where(move => move.IsLegal(Board));
         }
 
-        private void CheckForGameOver()
+        /*private void CheckForGameOver()
         {
             if (!AllLegalMoves(CurrentPlayer).Any())
             {
@@ -55,7 +55,29 @@
                     Result = Result.Draw(EndReason.Stalemate);
                 }
             }
+        }*/
+
+        private void CheckForGameOver()
+        {
+            // Check if the current player is in check after the opponent's move
+            if (Board.IsInCheck(CurrentPlayer))
+            {
+                // Check if the current player has no legal moves (checkmate scenario)
+                if (!AllLegalMoves(CurrentPlayer).Any())
+                {
+                    Result = Result.Win(CurrentPlayer.Opponent()); // Opponent wins (checkmate)
+                }
+            }
+            else
+            {
+                // If the current player is not in check, check if they have no legal moves (stalemate scenario)
+                if (!AllLegalMoves(CurrentPlayer).Any())
+                {
+                    Result = Result.Draw(EndReason.Stalemate); // No legal moves, it's a stalemate
+                }
+            }
         }
+
 
         public bool IsGameOver()
         {

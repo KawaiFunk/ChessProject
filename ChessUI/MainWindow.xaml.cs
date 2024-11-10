@@ -130,7 +130,7 @@ namespace ChessUI
 
         private void ShowHighlights()
         {
-            Color color = Colors.Aqua;
+            Color color = Color.FromArgb(128, 51, 255, 255);
 
             foreach (Position to in moveCache.Keys)
             {
