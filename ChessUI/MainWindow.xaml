@@ -9,7 +9,8 @@
         Icon="Assets/icon.ico"
         WindowStartupLocation="CenterScreen"
         Background="Black"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow">
     <Viewbox>
         <Grid x:Name="BoardGrid"
               Width="600"
@@ -30,6 +31,7 @@
                          Columns="8"
                          RenderOptions.BitmapScalingMode="HighQuality">
             </UniformGrid>
+            <ContentControl x:Name="MenuContainer"/>
         </Grid>
     </Viewbox>
 </Window>
