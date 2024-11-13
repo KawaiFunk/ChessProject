@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChessLogic
+﻿namespace ChessLogic
 {
     public class Pawn : Piece
     {
@@ -72,11 +66,12 @@ namespace ChessLogic
 
                     yield return new NormalMove(from, oneMovePosition);
                 }
+                
                 Position twoMovesPosition = oneMovePosition + forward;
                 
                 if (!HasMoved && CanMoveTo(twoMovesPosition, board))
                 {
-                    yield return new NormalMove(from, twoMovesPosition);
+                    yield return new DoublePawn(from, twoMovesPosition);
                 }
             }
         }
@@ -87,7 +82,11 @@ namespace ChessLogic
             {
                 Position to = from + forward + dir;
 
-                if (CanCaptureAt(to, board))
+                if (to == board.GetPawnSkipPosition(Color.Opponent()))
+                {
+                    yield return new EnPassant(from, to);
+                }
+                else if (CanCaptureAt(to, board))
                 {
                     if (to.Row == 0 || to.Row == 7)
                     {
