@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChessLogic {
+﻿namespace ChessLogic
+{
     public class EnPassant : Move
     {
         public override MoveType Type => MoveType.EnPassant;
