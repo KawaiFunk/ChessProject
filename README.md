@@ -25,6 +25,8 @@ This project was developed using guidance from the chess game development tutori
 
 ## Screenshots
 ![Main Interface](/ChessUI/Assets/Capture1.PNG)
+![Pause Menu](/ChessUI/Assets/Capture2.PNG)
+![Win Menu](/ChessUI/Assets/Capture3.PNG)
 
 ## Future Enhancements
 - Add AI for single-player mode.
