@@ -28,9 +28,9 @@ This project was developed using guidance from the chess game development tutori
 Here are some screenshots of the game:
 
 <div style="display: flex; justify-content: space-around;">
-  <img src="/chessUI/Assets/Capture1.PNG" alt="Screenshot 1" width="200">
-  <img src="/chessUI/Assets/Capture2.PNG" alt="Screenshot 2" width="200">
-  <img src="/chessUI/Assets/Capture3.PNG" alt="Screenshot 3" width="200">
+  <img src="/ChessUI/Assets/Capture1.PNG" alt="Screenshot 1" width="200">
+  <img src="/ChessUI/Assets/Capture2.PNG" alt="Screenshot 2" width="200">
+  <img src="/ChessUI/Assets/Capture3.PNG" alt="Screenshot 3" width="200">
 </div>
 
 
