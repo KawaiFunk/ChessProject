@@ -24,9 +24,9 @@ This is a two-player chess game developed in C# using WPF. The game adheres to s
 This project was developed using guidance from the chess game development tutorial by **[OttoBotCode](https://www.youtube.com/c/OttoBotCode)**. The guide provided a comprehensive foundation for implementing chess logic and UI design in C#.
 
 ## Screenshots
-![Alt text](/ChessUI/Assets/Capture1.jpg?raw=true "Board")
-![Alt text](/ChessUI/Assets/Capture2.jpg?raw=true "Pause Menu")
-![Alt text](/ChessUI/Assets/Capture3.jpg?raw=true "Win Menu")
+![Alt text](/ChessUI/Assets/Capture1.png?raw=true "Board")
+![Alt text](/ChessUI/Assets/Capture2.png?raw=true "Pause Menu")
+![Alt text](/ChessUI/Assets/Capture3.png?raw=true "Win Menu")
 
 ## Future Enhancements
 - Add AI for single-player mode.
